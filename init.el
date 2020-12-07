@@ -20,12 +20,17 @@
 ;; Various user configuration
 (setq user-full-name "Leon Wang"
       user-mail-address "leongwang@arista.com"
+      custom-file "~/.emacs.d/custom.el"
       ;; Makes lsp-mode faster by changing the value
       ;; from the default 4 KB to 1 MB
       read-process-output-max (* 1024 1024)
-	  ;; Make lsp-mode faster by increasing the garbage collector threshold.
-	  gc-cons-threshold 800000
+      ;; Make lsp-mode faster by increasing the garbage collector threshold.
+      gc-cons-threshold 800000
       gc-cons-percentage 0.1)
+
+;; Load ~/.emacs.d/custom.el if it exists.
+(when (file-exists-p custom-file)
+       (load custom-file))
 
 ;; Set default font-size
 (set-face-attribute 'default nil :height 140)
@@ -294,7 +299,7 @@
          (go-dot-mod-mode . lsp))
   :config
   (defun leongwang/go-mode-setup ()
-	;; workaround for imenu not matching multiline signatures
+    ;; workaround for imenu not matching multiline signatures
     ;; https://github.com/dominikh/go-mode.el/issues/57
     (setq-local imenu-generic-expression
                 '(("type" "^type *\\([^ \t\n\r\f]*(\\)" 1)
