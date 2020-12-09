@@ -192,9 +192,15 @@
   :init (ivy-mode)
   :diminish ivy-mode
   :config
+  ;; Flx is a fuzzy matching engine.
+  (use-package flx :defer t)
   (setq ivy-height 20 ;; show 20 results
 	;; Add Recentf and bookmarks to ivy-switch-buffercounsel-yank-pop-height
-        ivy-use-virtual-buffers t)
+	ivy-use-virtual-buffers t
+	;; Use default regex match engine in swiper,
+	;; and flx fuzzy match engine for all other completion.
+	ivy-re-builders-alist '((swiper . ivy--regex-plus)
+                                (t . ivy--regex-fuzzy)))
 
   ;; Counsel is a collection of Ivy-enhanced versions of common Emacs commands.
   (use-package counsel
