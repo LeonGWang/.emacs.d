@@ -249,7 +249,7 @@
   :init (which-key-mode)
   :diminish which-key-mode)
 
-;; LSP is Language Server Protocol support for Emacs
+;; lsp-mode is Language Server Protocol support for Emacs
 (use-package lsp-mode
   :custom
   (lsp-auto-guess-root t)
@@ -262,7 +262,8 @@
    '(("gopls.completeUnimported" t t) ;; autocomplete unimported packages
      ("gopls.staticcheck" t t))))     ;; enables analyses from staticcheck.io.
 
-;; YANG-major-mode
+;;; YANG-major-mode
+;; YANG-mode is a Emacs mode for YANG (RFC 7950).
 (use-package yang-mode :defer t
   :bind (:map yang-mode-map
               ("C-c u" . sp-backward-up-sexp)) ;; Take to parent.
@@ -275,26 +276,20 @@
                                ("import" "import \\(.*\\) {" 1)
                                )))))
 
-;; Python-major-mode
+;;; Python-major-mode
+;; lsp-python-ms is a lsp-mode client leveraging Microsoft’s
+;; python-language-server.
 (use-package lsp-python-ms
   :init (setq lsp-python-ms-auto-install-server t)
   :hook (python-mode . (lambda ()
                           (require 'lsp-python-ms)
                           (lsp))))
 
-;; Go-major-mode
+;;; Go-major-mode
 (unless (getenv "GOPATH")
   (setenv "GOPATH" "/Users/leongwang/go"))
 
-(defvar leongwang/go-packages '()
-  "A list of packages that my Emacs setup needs.")
-(defun leongwang/install-go-packages ()
-  "Install the list of packages that my Emacs setup needs."
-  (interactive)
-  (compile (format "go get -u -v %s"
-		   (mapconcat 'identity leongwang/go-packages " "))))
-
-;; Go-mode
+;; Go-mode is the Emacs mode for editing Go code.
 (use-package go-mode
   :defer t
   :hook ((go-mode . (lambda ()
