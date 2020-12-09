@@ -5,7 +5,7 @@
 
 ;;; Code:
 ;; Enables C-x n n to do narrow-to-region.
-;; C-x n w to widen-to-region again
+;;         C-x n w to widen-to-region again
 (put 'narrow-to-region 'disabled nil)
 ;; Pressing "a" in Dired visits the directory/file and kills the previous buffer.
 ;; That is much better than pressing RET and leaving DIRED buffers open.
@@ -21,7 +21,7 @@
 (setq user-full-name "Leon Wang"
       user-mail-address "leongwang@arista.com"
       custom-file "~/.emacs.d/custom.el"
-      ;; Makes lsp-mode faster by changing the value
+      ;; Makes lsp-mode faster by changing read-process-output-max
       ;; from the default 4 KB to 1 MB
       read-process-output-max (* 1024 1024)
       ;; Make lsp-mode faster by increasing the garbage collector threshold.
@@ -30,14 +30,14 @@
 
 ;; Load ~/.emacs.d/custom.el if it exists.
 (when (file-exists-p custom-file)
-       (load custom-file))
+  (load custom-file))
 
 ;; Set default font-size
 (set-face-attribute 'default nil :height 140)
 
 ;; Turn on line numbering
-;;  The number of columns needed to display line numbers should only grow
-;;  to minimize visual stuttering.
+;;   The number of columns needed to display line numbers should only grow
+;;   to minimize visual stuttering.
 (setq-default display-line-numbers-grow-only t)
 (global-display-line-numbers-mode)
 ;; Turn on column numbering
@@ -195,7 +195,7 @@
   ;; Flx is a fuzzy matching engine.
   (use-package flx :defer t)
   (setq ivy-height 20 ;; show 20 results
-	;; Add Recentf and bookmarks to ivy-switch-buffercounsel-yank-pop-height
+	;; Add Recentf and bookmarks to ivy-switch-buffer
 	ivy-use-virtual-buffers t
 	;; Use default regex match engine in swiper,
 	;; and flx fuzzy match engine for all other completion.
