@@ -207,7 +207,9 @@
     ;; Change default from match string beginnings to match substrings
     (setq ivy-initial-inputs-alist nil
 	  ivy-height-alist '((counsel-yank-pop . 10))
-	  counsel-yank-pop-separator "\n--\n")
+	  counsel-yank-pop-separator "\n--\n"
+	  ;; Counsel-imenu jump to definition when selecting candidates.
+	  ivy-update-fns-alist '((counsel-imenu . auto)))
     ;; Amx is a forked version of Smex or Smart-enhanced "M-x"
     ;; Amx sorts "M-x" commands by last-used
     (use-package amx
