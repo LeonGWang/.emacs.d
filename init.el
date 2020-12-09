@@ -275,6 +275,13 @@
                                ("import" "import \\(.*\\) {" 1)
                                )))))
 
+;; Python-major-mode
+(use-package lsp-python-ms
+  :init (setq lsp-python-ms-auto-install-server t)
+  :hook (python-mode . (lambda ()
+                          (require 'lsp-python-ms)
+                          (lsp))))
+
 ;; Go-major-mode
 (unless (getenv "GOPATH")
   (setenv "GOPATH" "/Users/leongwang/go"))
