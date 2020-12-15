@@ -197,9 +197,10 @@
   (setq ivy-height 20 ;; show 20 results
 	;; Add Recentf and bookmarks to ivy-switch-buffer
 	ivy-use-virtual-buffers t
-	;; Use default regex match engine in swiper,
+	;; Use default regex match engine in swiper and counsel-projectile-rg,
 	;; and flx fuzzy match engine for all other completion.
 	ivy-re-builders-alist '((swiper . ivy--regex-plus)
+				(counsel-rg . ivy--regex-plus)
                                 (t . ivy--regex-fuzzy)))
 
   ;; Counsel is a collection of Ivy-enhanced versions of common Emacs commands.
