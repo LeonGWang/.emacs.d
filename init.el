@@ -99,6 +99,9 @@
 (use-package exec-path-from-shell
   :if (memq window-system '(mac ns x))
   :config
+  ;; Manually set $SHELL environment variable to brew-installed bash because
+  ;; Emacs doesn't play well with brew-installed zsh's custom theme.
+  (setenv "SHELL" "/usr/local/bin/bash")
   (exec-path-from-shell-initialize)
   ;; Additionally also take $GOPATH and $PYTHONPATH from shell.
   (exec-path-from-shell-copy-env "GOPATH")
