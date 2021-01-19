@@ -229,6 +229,14 @@
   ;; an overview of all matches.
   (use-package swiper
     :bind ("C-s" . swiper)
+    :config
+    ;; For some reason ivy-configure for swiper is not working without manually
+    ;; setting it in init.el.
+    (ivy-configure 'swiper
+      :occur #'swiper-occur
+      :update-fn #'swiper--update-input-ivy
+      :unwind-fn #'swiper--cleanup
+      :index-fn #'ivy-recompute-index-swiper))
 
   ;; Use Ivy as the interface to select from xref candidates.
   (use-package ivy-xref
