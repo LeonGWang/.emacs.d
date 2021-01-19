@@ -228,7 +228,7 @@
   ;; Swiper is an alternative to isearch that uses ivy to show
   ;; an overview of all matches.
   (use-package swiper
-    :bind ("M-i" . swiper))
+    :bind ("C-s" . swiper)
 
   ;; Use Ivy as the interface to select from xref candidates.
   (use-package ivy-xref
@@ -252,7 +252,8 @@
   ;; Counsel-projectile provides further ivy integration into Projectile.
   (use-package counsel-projectile
     :init (counsel-projectile-mode)
-    :bind ("M-I". counsel-projectile-rg))
+    :bind (("C-x b" . counsel-projectile)
+	   ("M-i" . counsel-projectile-rg)))
   :diminish projectile-mode)
 
 ;; Which-key is a minor mode for Emacs that displays the key bindings
