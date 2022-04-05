@@ -66,7 +66,12 @@
 ;; Set default "M-x shell-command" to Brew-installed Bash
 (setq shell-file-name "/usr/local/bin/bash")
 
-;; Emacs package repository
+;; Issue with Emacs 27.2 + MacOS having the wrong TLS algorithm priority
+;; to connect to Emacs package repositories.
+(when (and (equal emacs-version "27.2")
+           (eql system-type 'darwin))
+  (setq gnutls-algorithm-priority "NORMAL:-VERS-TLS1.3"))
+;; Emacs package repositories.
 (setq package-archives
       '(("gnu" . "https://elpa.gnu.org/packages/")
         ("MELPA" . "https://melpa.org/packages/")))
