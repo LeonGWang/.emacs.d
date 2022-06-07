@@ -275,19 +275,6 @@
   :init (which-key-mode)
   :diminish which-key-mode)
 
-;; lsp-mode is Language Server Protocol support for Emacs
-(use-package lsp-mode
-  :custom
-  (lsp-auto-guess-root t)
-  (lsp-enable-file-watchers nil)
-  (lsp-imenu-sort-methods '(position))
-  (lsp-restart 'ignore)
-  (lsp-response-timeout 2)
-  :config
-  (lsp-register-custom-settings
-   '(("gopls.completeUnimported" t t) ;; autocomplete unimported packages
-     ("gopls.staticcheck" t t))))     ;; enables analyses from staticcheck.io.
-
 ;;; YANG-major-mode
 ;; YANG-mode is a Emacs mode for YANG (RFC 7950).
 (use-package yang-mode :defer t
@@ -301,6 +288,24 @@
                                ("grouping" "grouping \\(.*\\) {" 1)
                                ("import" "import \\(.*\\) {" 1)
                                )))))
+
+;;; YAML-major-mode
+;; YAML-mode is a Emacs mode for YAML (Yet Another Markup Language)
+(use-package yaml-mode :defer t
+  :init (add-to-list 'auto-mode-alist '("\\.yml\\'" . yaml-mode)))
+
+;; lsp-mode is Language Server Protocol support for Emacs
+(use-package lsp-mode
+  :custom
+  (lsp-auto-guess-root t)
+  (lsp-enable-file-watchers nil)
+  (lsp-imenu-sort-methods '(position))
+  (lsp-restart 'ignore)
+  (lsp-response-timeout 2)
+  :config
+  (lsp-register-custom-settings
+   '(("gopls.completeUnimported" t t) ;; autocomplete unimported packages
+     ("gopls.staticcheck" t t))))     ;; enables analyses from staticcheck.io.
 
 ;;; Python-major-mode
 ;; lsp-python-ms is a lsp-mode client leveraging Microsoft’s
