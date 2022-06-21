@@ -346,10 +346,15 @@
   :bind
   ("C-c g" . magit-status)
   :config
-  (defun magit-push-to-gerrit ()
+  (defun magit-push-to-gerrit-corp ()
     (interactive)
     (magit-git-command-topdir "git push origin HEAD:refs/for/master"))
+  (defun magit-push-to-horseland-gerrit ()
+    (interactive)
+    (magit-git-command-topdir "git push origin HEAD:refs/for/main"))
   (transient-append-suffix 'magit-push "m"
-    '("g" "Push to gerrit" magit-push-to-gerrit)))
+    '("g" "Push to gerrit.corp" magit-push-to-gerrit-corp))
+  (transient-append-suffix 'magit-push "g"
+    '("h" "Push to horseland-gerrit" magit-push-to-horseland-gerrit)))
 
 ;;; init.el ends here
