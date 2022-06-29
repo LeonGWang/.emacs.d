@@ -35,6 +35,15 @@
 ;; Set default font-size
 (set-face-attribute 'default nil :height 140)
 
+;; Set default bidirectional direction to reduce long-line handling burden.
+(setq-default bidi-paragraph-direction 'left-to-right)
+(if (version<= "27.1" emacs-version)
+    ;; Turn off bidirectional parentheses algorithm (bpa) to reduce long-line handling burden.
+    (setq bidi-inhibit-bpa t)
+    ;; Automatically detect long-lines and replace all modes with so-long-mode to
+    ;; greatly speed up long-line handling.
+    (global-so-long-mode 1))
+
 ;; Turn on line numbering
 ;;   The number of columns needed to display line numbers should only grow
 ;;   to minimize visual stuttering.
