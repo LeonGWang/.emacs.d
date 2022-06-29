@@ -124,9 +124,9 @@
    ;; Right-justify anything after the (minor-)mode-list
    (setq sml/mode-width 'full)
    ;; Add abbreviation to common working paths
-   (add-to-list 'sml/replacer-regexp-list '("^~/go/src/arista/" ":GSrcAr:") t)
-   (add-to-list 'sml/replacer-regexp-list '("^:GSrcAr:gopenconfig/" ":GOC:") t)
-   (add-to-list 'sml/replacer-regexp-list '("^:GOC:eos/mapping/" ":GOC_MAPP:") t)
+   (add-to-list 'sml/replacer-regexp-list '("^~/go/src/arista/" ":GAr:") t)
+   (add-to-list 'sml/replacer-regexp-list '("^:GAr:gopenconfig/" ":GArOc:") t)
+   (add-to-list 'sml/replacer-regexp-list '("^:GArOc:eos/mapping/" ":GArOcMap:") t)
    (sml/setup))
 
 ;; Buffer-move moves buffers around.
