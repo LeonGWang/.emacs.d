@@ -88,15 +88,6 @@
 (require 'use-package-ensure)
 (setq use-package-always-ensure t)
 
-;; Auto-package-update automatically updates Emacs packages periodically.
-;; Default update interval is every 7 days.
-(use-package auto-package-update
-  :config
-  (setq auto-package-update-delete-old-versions t)
-  (setq auto-package-update-hide-results t)
-  ;; Updates package on startup.
-  (auto-package-update-maybe))
-
 ;; Exec-path-from-shell ensures environment variables inside Emacs
 ;; look the same as in the user's shell.
 ;; When loading GUI Emacs on OS X and Linux, take $PATH, $MANPATH from shell,
