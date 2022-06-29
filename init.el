@@ -78,6 +78,7 @@
 ;; After Emacs 27.0, package-initialize is called
 ;; automatically before loading init.el
 (when (version< emacs-version "27.0")
+  ;; package-initialize will refresh deleted packages in M-x list-packages.
   (package-initialize))
 
 ;; Portable 'use-package shim
@@ -284,6 +285,11 @@
 ;; YAML-mode is a Emacs mode for YAML (Yet Another Markup Language)
 (use-package yaml-mode :defer t
   :init (add-to-list 'auto-mode-alist '("\\.yml\\'" . yaml-mode)))
+
+;;; JSON-major-mode
+;; JSON-mode is a major mode for editing JSON files.
+(use-package json-mode :defer t
+  :init (add-to-list 'auto-mode-alist '("\\.json\\'" . json-mode)))
 
 ;; lsp-mode is Language Server Protocol support for Emacs
 (use-package lsp-mode
