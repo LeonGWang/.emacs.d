@@ -276,20 +276,6 @@
   :init (which-key-mode)
   :diminish which-key-mode)
 
-;;; YANG-major-mode
-;; YANG-mode is a Emacs mode for YANG (RFC 7950).
-(use-package yang-mode :defer t
-  :bind (:map yang-mode-map
-              ("C-c u" . sp-backward-up-sexp)) ;; Take to parent.
-  :hook (yang-mode . (lambda ()
-                       (setq imenu-generic-expression
-                             '(("leaf" "leaf \\(.*\\) {" 1)
-                               ("container" "container \\(.*\\) {" 1)
-                               ("list" "list \\(.*\\) {" 1)
-                               ("grouping" "grouping \\(.*\\) {" 1)
-                               ("import" "import \\(.*\\) {" 1)
-                               )))))
-
 ;;; YAML-major-mode
 ;; YAML-mode is a Emacs mode for YAML (Yet Another Markup Language)
 (use-package yaml-mode :defer t
