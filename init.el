@@ -124,20 +124,24 @@
 
 ;; Smart Mode Line is a sexy mode-line for Emacs.
 (use-package smart-mode-line
-   :config
-   ;; Add a % sign to battery display
-   (setq sml/battery-format " %p%% ")
-   (setq sml/shorten-directory t)
-   ;; Path name takes up a maximum of 33 characters
-   (setq sml/name-width 33)
-   (setq sml/shorten-mode-string t)
-   ;; Right-justify anything after the (minor-)mode-list
-   (setq sml/mode-width 'full)
-   ;; Add abbreviation to common working paths
-   (add-to-list 'sml/replacer-regexp-list '("^~/go/src/arista/" ":GAr:") t)
-   (add-to-list 'sml/replacer-regexp-list '("^:GAr:gopenconfig/" ":GArOc:") t)
-   (add-to-list 'sml/replacer-regexp-list '("^:GArOc:eos/mapping/" ":GArOcMap:") t)
-   (sml/setup))
+  :config
+  (setq sml/theme 'respectful)
+  (setq sml/no-confirm-load-theme t)
+  ;; Add a % sign to battery display
+  (setq sml/battery-format " %p%% ")
+  (setq sml/shorten-directory t)
+  ;; Path name takes up a maximum of 33 characters
+  (setq sml/name-width 33)
+  (setq sml/shorten-modes t)
+  ;; Right-justify anything after the (minor-)mode-list
+  (setq sml/mode-width 'full)
+  ;; Filler Hack for Emacs Version 29.1 since the right-justification doesn't work properly.
+  (setq sml/extra-filler -5)
+  ;; Add abbreviation to common working paths
+  (add-to-list 'sml/replacer-regexp-list '("^~/go/src/arista/" ":GAr:") t)
+  (add-to-list 'sml/replacer-regexp-list '("^:GAr:gopenconfig/" ":GArOc:") t)
+  (add-to-list 'sml/replacer-regexp-list '("^:GArOc:eos/mapping/" ":GArOcMap:") t)
+  (sml/setup))
 
 ;; Buffer-move moves buffers around.
 (use-package buffer-move
